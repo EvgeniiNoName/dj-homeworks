@@ -14,13 +14,7 @@ class SensorCreate(ListCreateAPIView):
 class SensorUpdate(RetrieveUpdateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
-    #
-    #
-    # def get(self, request, *args, **kwargs):
-    #     print(Sensor.objects.filter(id=15))
-    #     # # print(Sensor.objects.filter(id=15))
-    #     # # print(self.request.user)
-    #     return self.retrieve(request, *args, **kwargs)
+
 
 # добавление измерения
 class MeasurementAdded(CreateAPIView):
