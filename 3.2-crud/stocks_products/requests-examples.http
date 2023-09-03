@@ -1,9 +1,10 @@
 # примеры API-запросов
 
 @baseUrl = http://localhost:8000/api/v1
+###
 
 # создание продукта
-POST {{baseUrl}}/products/
+POST http://localhost:8000/api/v1/products/
 Content-Type: application/json
 
 {
@@ -14,13 +15,13 @@ Content-Type: application/json
 ###
 
 # получение продуктов
-GET {{baseUrl}}/products/
+GET http://localhost:8000/api/v1/products/
 Content-Type: application/json
 
 ###
 
 # обновление продукта
-PATCH {{baseUrl}}/products/1/
+PATCH http://localhost:8000/api/v1/products/1/
 Content-Type: application/json
 
 {
@@ -30,23 +31,23 @@ Content-Type: application/json
 ###
 
 # удаление продукта
-DELETE {{baseUrl}}/products/1/
+DELETE http://localhost:8000/api/v1/products/1/
 Content-Type: application/json
 
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET http://localhost:8000/api/v1/products/?search=мол
 Content-Type: application/json
 
 ###
 
 # создание склада
-POST {{baseUrl}}/stocks/
+POST http://localhost:8000/api/v1/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "12",
   "positions": [
     {
       "product": 2,
@@ -64,7 +65,7 @@ Content-Type: application/json
 ###
 
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH http://localhost:8000/api/v1/stocks/12/
 Content-Type: application/json
 
 {
@@ -76,8 +77,8 @@ Content-Type: application/json
     },
     {
       "product": 3,
-      "quantity": 243,
-      "price": 145
+      "quantity": 200,
+      "price": 300
     }
   ]
 }
@@ -85,5 +86,7 @@ Content-Type: application/json
 ###
 
 # поиск складов, где есть определенный продукт
-GET {{baseUrl}}/stocks/?products=2
+GET http://localhost:8000/api/v1/stocks/?products=2
 Content-Type: application/json
+
+
