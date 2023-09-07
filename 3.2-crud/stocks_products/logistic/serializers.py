@@ -51,9 +51,3 @@ class StockSerializer(serializers.ModelSerializer):
                 stock=stock)
 
         return stock
-
-        # здесь вам надо обновить связанные таблицы
-        # в нашем случае: таблицу StockProduct
-        # с помощью списка positions
-
-        return stock
