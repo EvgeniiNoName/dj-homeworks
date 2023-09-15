@@ -61,37 +61,33 @@ def test_list_course(api_client, course_factory):
 @pytest.mark.django_db
 def test_filter_courses_by_id(api_client, course_factory):
     # Arrage
-    course1 = course_factory()
-    course2 = course_factory()
-    course3 = course_factory()
+    courses = course_factory(_quantity=3)
 
     # Act
-    id = course2.id
-    response = api_client.get(f'/api/v1/courses/{id}/')
+    id = courses[1].id
+    response = api_client.get(f'/api/v1/courses/', {'id': id})
 
     # Assert
     assert response.status_code == 200
     data = response.json()
-    assert data['id'] == course2.id
-    assert data['name'] == course2.name
+    assert data[0]['id'] == courses[1].id
+    assert data[0]['name'] == courses[1].name
 
 
 @pytest.mark.django_db
 def test_filter_courses_by_name(api_client, course_factory):
     # Arrage
-    course1 = course_factory()
-    course2 = course_factory()
-    course3 = course_factory()
-    name_course2 = course2.name
+    course = course_factory(_quantity=3)
+    name_course = course[1].name
 
     # Act
-    response = api_client.get('/api/v1/courses/', {'name': name_course2})
+    response = api_client.get('/api/v1/courses/', {'name': name_course})
 
     # Assert
     assert response.status_code == 200
     data = response.json()
-    assert data[0]['id'] == course2.id
-    assert data[0]['name'] == course2.name
+    assert data[0]['id'] == course[1].id
+    assert data[0]['name'] == course[1].name
 
 
 @pytest.mark.django_db
